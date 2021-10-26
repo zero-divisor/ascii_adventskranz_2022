@@ -27,6 +27,7 @@ while true
 do
   for(( k=0; k<${#flamesLine1[*]}; k++ ))
   do
+    setterm -cursor off
     declare -i dateNr=$(date +%m%d)
 
     if (( $dateNr >= 1219 ))
@@ -70,5 +71,6 @@ do
 
     sleep .3
     clear
+    setterm -cursor on
   done
 done
