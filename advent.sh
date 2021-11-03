@@ -23,7 +23,15 @@ flamesLine2=("${flame1L[1]}" "${flame2M[1]}" "${flame1S[1]}" "${flame1M[1]}" "${
 flamesLine3=("${flame1L[2]}" "${flame2M[2]}" "${flame1S[2]}" "${flame1M[2]}" "${flame2L[2]}" "${flame1M[2]}" "${flame2S[2]}" "${flame2M[2]}")
 flamesLine4=("${flame1L[3]}" "${flame2M[3]}" "${flame1S[3]}" "${flame1M[3]}" "${flame2L[3]}" "${flame1M[3]}" "${flame2S[3]}" "${flame2M[3]}")
 
-while true
+if [ -t 0 ]; then
+  SAVED_STTY="`stty --save`"
+  stty -echo -icanon -icrnl time 0 min 0
+fi
+keypress=''
+
+setterm -cursor off
+
+while [ "x$keypress" = "x" ];
 do
   for(( k=0; k<${#flamesLine1[*]}; k++ ))
   do
@@ -68,7 +76,14 @@ do
       printf "\n"$nc"${candle[$j]}""   ""${candle[$j]}""   ""${candle[$j]}""   ""${candle[$j]}"
     done
 
-    sleep .3
+    sleep .2
     clear
   done
+  keypress="`cat -v`"
 done
+
+setterm -cursor on
+
+if [ -t 0 ]; then stty "$SAVED_STTY"; fi
+echo "Script terminated at:    "$(date)
+exit 0
