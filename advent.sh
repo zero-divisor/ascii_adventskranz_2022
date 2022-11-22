@@ -37,16 +37,16 @@ do
   do
     declare -i dateNr=$(date +%m%d)
 
-    if (( $dateNr >= 1219 ))
+    if (( $dateNr >= 1218 ))
     then
       adventNr=4
-    elif (( $dateNr >= 1212 ))
+    elif (( $dateNr >= 1211 ))
     then
       adventNr=3
-    elif (( $dateNr >= 1205 ))
+    elif (( $dateNr >= 1204 ))
     then
       adventNr=2
-    elif (( $dateNr >= 1128 ))
+    elif (( $dateNr >= 1127 ))
     then
       adventNr=1
     else
